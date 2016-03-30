@@ -1,0 +1,8 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<JB.Security.SecurityVulnerabilities.Models.Document>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Items-@Dnn.ModuleContext.ModuleId">
+        @Html.Raw(Model.Contents)
+</div>

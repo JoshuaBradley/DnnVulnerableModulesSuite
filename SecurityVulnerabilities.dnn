@@ -1,0 +1,344 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="XSS" type="Module" version="00.00.03">
+      <friendlyName>XSS</friendlyName>
+      <description>SecurityVulnerabilities</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Joshua Bradley</name>
+        <organization>Joshua Bradley</organization>
+        <url></url>
+        <email>JoshuaRobertBradley@Gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\MVC\SecurityVulnerabilities</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>00.00.01.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>00.00.02.SqlDataProvider</name>
+              <version>00.00.02</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>00.00.03.SqlDataProvider</name>
+              <version>00.00.03</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/MVC/SecurityVulnerabilities</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>XSS</moduleName>
+            <foldername>SecurityVulnerabilities</foldername>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>XSS</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/DisplayItem/Index.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/DisplayItem/Edit.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit Content</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/Settings/Settings.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>SecurityVulnerabilities Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>SecurityVulnerabilities.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+    <package name="XSS2" type="Module" version="00.00.03">
+      <friendlyName>XSS2</friendlyName>
+      <description>SecurityVulnerabilities</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Joshua Bradley</name>
+        <organization>Joshua Bradley</organization>
+        <url></url>
+        <email>JoshuaRobertBradley@Gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>XSS2</moduleName>
+            <foldername>SecurityVulnerabilities</foldername>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>XSS2</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/XSS2/Index.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/Settings/Settings.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>SecurityVulnerabilities Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+      </components>
+    </package>
+    <package name="SQLi" type="Module" version="00.00.03">
+      <friendlyName>SQLi</friendlyName>
+      <description>SecurityVulnerabilities</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Joshua Bradley</name>
+        <organization>Joshua Bradley</organization>
+        <url></url>
+        <email>JoshuaRobertBradley@Gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>SQLi</moduleName>
+            <foldername>SecurityVulnerabilities</foldername>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>SQLi</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/SQLi/Index.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/Settings/Settings.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>SecurityVulnerabilities Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+      </components>
+    </package>
+    <package name="Shopping Cart" type="Module" version="00.00.03">
+      <friendlyName>Shopping Cart</friendlyName>
+      <description>SecurityVulnerabilities</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Joshua Bradley</name>
+        <organization>Joshua Bradley</organization>
+        <url></url>
+        <email>JoshuaRobertBradley@Gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>Shopping Cart</moduleName>
+            <foldername>MVC/SecurityVulnerabilities</foldername>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Shopping Cart</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/MVC/SecurityVulnerabilities/Views/Orders/ShoppingCartView.html</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+      </components>
+    </package>
+    <package name="View Orders" type="Module" version="00.00.03">
+      <friendlyName>View Orders</friendlyName>
+      <description>SecurityVulnerabilities</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Joshua Bradley</name>
+        <organization>Joshua Bradley</organization>
+        <url></url>
+        <email>JoshuaRobertBradley@Gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>View Orders</moduleName>
+            <foldername>MVC/SecurityVulnerabilities</foldername>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>View Orders</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/MVC/SecurityVulnerabilities/Views/Orders/OrderView.html</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+      </components>
+    </package>
+    <package name="Document Viewer" type="Module" version="00.00.03">
+      <friendlyName>Document Viewer</friendlyName>
+      <description>SecurityVulnerabilities</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Joshua Bradley</name>
+        <organization>Joshua Bradley</organization>
+        <url></url>
+        <email>JoshuaRobertBradley@Gmail.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">08.00.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>Document Viewer</moduleName>
+            <foldername>SecurityVulnerabilities</foldername>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Document Viewer</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>JB.Security.SecurityVulnerabilities.Controllers/DocumentViewer/Index.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

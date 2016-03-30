@@ -1,0 +1,4 @@
+.items .item {
+    display: inline-block;
+    max-width: 200px;
+}

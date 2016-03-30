@@ -1,0 +1,37 @@
+﻿[JavaScript:{ path: "~/Resources/Shared/scripts/dnn.jquery.js"}]
+[JavaScript:{ jsname: "Knockout" }]
+
+<!-- ko foreach: orders -->
+<div class="order">
+    <h1>Recent Order</h1>
+    <h3 data-bind="text: Name"></h3>
+    <p data-bind="text: Address"></p>
+    <p data-bind="text: City"></p>
+    <p data-bind="text: State"></p>
+    <p data-bind="text: ZipCode"></p>
+    <p data-bind="text: Country"></p>
+</div>
+<!-- /ko-->
+
+<script>
+    $(document).ready(function () {
+        const sf = $.ServicesFramework([ModuleContext:ModuleId]);
+        function OrderViewModel () {
+            var self = this;
+            self.orders = ko.observableArray([]);
+            GetOrders();
+            function GetOrders () {
+                $.ajax({
+                    type: 'GET',
+                    url: sf.getServiceRoot('MVC/SecurityVulnerabilities') + 'ShoppingCart/GetOrders',
+                    beforeSend: sf.setModuleHeaders,
+                    contentType: 'application/json'
+                }).done(function (data) {
+                    self.orders(data);
+                });
+            }
+        }
+
+        ko.applyBindings(new OrderViewModel());
+    });
+</script>

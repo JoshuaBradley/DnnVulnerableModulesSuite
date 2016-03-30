@@ -1,0 +1,14 @@
+﻿IF EXISTS(Select Name from Sys.objects WHERE object_id = object_id(N'{databaseOwner}[{objectQualifier}sp_GetDisplay]') and type IN ( N'P', N'PC' ))
+BEGIN
+	Drop Procedure {databaseOwner}[{objectQualifier}sp_GetDisplay]
+END
+
+GO
+
+Create Procedure {databaseOwner}[{objectQualifier}sp_GetDisplay]
+	@ModuleId nVarChar(500)
+AS
+	Declare @SqlStr nVarChar(1000)
+	Set @SqlStr = 'Select Display from SecurityVulnerabilies_DisplayItems where Display like ''%' + @keyword + '%'''
+	EXEC sp_ExecuteSql @SqlStr
+GO

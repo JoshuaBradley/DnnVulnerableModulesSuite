@@ -1,0 +1,23 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<JB.Security.SecurityVulnerabilities.Models.DisplayItem>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Items-@Dnn.ModuleContext.ModuleId">
+    Hello @Html.Raw(Model.Display)
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.Label("Name", new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextBox("Name")
+    </div>
+    <a class="update-button" href='@Url.Action("Index", "XSS2")?name=REPLACETHIS'>Enter Name</a>
+</div>
+<script>
+    $(function () {
+        $('.update-button').on('click', function () {
+            var name = $('#Name').val();
+            this.href = this.href.replace("REPLACETHIS", name);
+        });
+    });
+</script>

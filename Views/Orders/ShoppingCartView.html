@@ -1,0 +1,130 @@
+﻿[JavaScript:{ path: "~/Resources/Shared/scripts/dnn.jquery.js"}]
+[JavaScript:{ jsname: "Knockout" }]
+[Css:{path: "~/DesktopModules/MVC/SecurityVulnerabilities/module.css"}]
+
+<div class="items">
+    <ul>
+        <!-- ko foreach: items-->
+        <li class="item">
+            <input type="hidden" class="item-id" data-bind="value: ItemId"/>
+            <img class="item-image img-responsive" data-bind="attr: {src: Photo}" />
+            <h4 data-bind="text: Name"></h4>
+            <p data-bind="text: Description"></p>
+            <p data-bind="text: window.formatCurrency(Price)"></p>
+            <input class="addToCart btn btn-primary" type="button" value="Add to Cart" onclick="window.addToCart(this)"/>
+        </li>
+        <!-- /ko -->
+    </ul>
+</div>
+
+<div class="place-order">
+    <label>Current Total: </label><p data-bind="text: window.formatCurrency(currentPrice())"></p>
+    <label>Name</label><input type="text" class="form-control" data-bind="value: name"/>
+    <label>Address</label><input type="text" class="form-control" data-bind="value: address"/>
+    <label>City</label><input type="text" class="form-control" data-bind="value: city"/>
+    <label>State</label><input type="text" class="form-control" data-bind="value: state"/>
+    <label>Zip Code</label><input type="text" class="form-control" data-bind="value: zipCode"/>
+    <label>Country</label><input type="text" class="form-control" data-bind="value: country"/>
+    <label>Credit Card Number</label><input type="text" class="form-control" data-bind="value: creditCardNumber"/>
+    <label>Credit Card Expiration</label><input type="text" class="form-control" data-bind="value: creditCardExpiration"/>
+    <label>CCV</label><input type="text" class="form-control" data-bind="value: creditCardSecurity"/>
+    <input type="button" class="purchase-order btn btn-primary" value="Purchase Order"/>
+</div>
+
+<script>
+    $(document).ready(function () {
+        const sf = $.ServicesFramework([ModuleContext:ModuleId]);
+        function ShoppingCartViewModel () {
+            var self = this;
+            self.items = ko.observableArray([]);
+            self.shoppingCartItems = ko.observableArray([]);
+            self.shoppingCartItems([]);
+            self.name = ko.observable();
+            self.address = ko.observable();
+            self.city = ko.observable();
+            self.state = ko.observable();
+            self.zipCode = ko.observable();
+            self.country = ko.observable();
+            self.creditCardNumber = ko.observable();
+            self.creditCardExpiration = ko.observable();
+            self.creditCardSecurity = ko.observable();
+            self.currentPrice = ko.observable();
+            
+            function updatePrice () {
+                var runningTotal = 0.00;
+                $.each(self.shoppingCartItems(), function (index, data) {
+                    var item = self.items().filter(function (item) {
+                        return item.ItemId.toString() === data;
+                    })[0];
+
+                    if (item.Price !== undefined) {
+                        runningTotal += item.Price;
+                    }
+                });
+
+               self.currentPrice(runningTotal);
+            };
+
+            getItems();
+
+            function getItems () {
+                $.ajax({
+                    type: 'GET',
+                    url: sf.getServiceRoot('MVC/SecurityVulnerabilities') + 'ShoppingCart/GetItems',
+                    beforeSend: sf.setModuleHeaders
+                }).done(function (data) {
+                    self.items(data);
+                });
+            }
+
+            window.addToCart = function(context) {
+                var itemId = $(context).parent().find('.item-id').val();
+                self.shoppingCartItems().push(itemId);
+                updatePrice();
+            }
+
+            $('.purchase-order').on('click', function () {
+                var data = getJson();
+
+                $.ajax({
+                    type: 'POST',
+                    url: sf.getServiceRoot('MVC/SecurityVulnerabilities') + 'ShoppingCart/PurchaseOrder',
+                    data: data,
+                    ContentType: 'application/json',
+                    beforeSend: sf.setModuleHeaders
+                }).done(function () {
+                    resetCart();
+                    alert('Order Confirmed!');
+                });
+            });
+
+            function getJson () {
+                return {
+                        name: self.name(),
+                        address: self.address(),
+                        state: self.state(),
+                        city: self.city(),
+                        zipCode: self.zipCode(),
+                        country: self.country(),
+                        creditCardNumber: self.creditCardNumber(),
+                        creditCardExpiration: self.creditCardExpiration(),
+                        creditCardCCV: self.creditCardSecurity(),
+                        itemIds: self.shoppingCartItems(),
+                        total: self.currentPrice()
+                };
+            }
+
+            function resetCart () {
+                self.shoppingCartItems([]);
+            }
+
+            updatePrice();
+        }
+
+        window.formatCurrency = function(value) {
+            return "$" + value.toFixed(2);
+        }
+
+        ko.applyBindings(new ShoppingCartViewModel());
+    });
+</script>
