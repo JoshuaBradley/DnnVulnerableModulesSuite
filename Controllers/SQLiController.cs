@@ -58,7 +58,6 @@ namespace JB.Security.SecurityVulnerabilities.Controllers
             return View(displayItem);
         }
 
-
         //String Concat Stored Proc.
         ////[HttpGet]
         ////public ActionResult Index()
@@ -76,6 +75,35 @@ namespace JB.Security.SecurityVulnerabilities.Controllers
         ////    {
         ////        var cmd = new SqlCommand(sql);
         ////        cmd.CommandType = CommandType.Text;
+        ////        cmd.Connection = connection;
+        ////        connection.Open();
+
+        ////        ExecuteAndRead(cmd, result);
+        ////    }
+
+        ////    var displayItem = new DisplayItem() { Display = result.ToString() };
+        ////    return View(displayItem);
+        ////}
+        /// 
+        /// [HttpGet]
+        ////public ActionResult Index()
+        ////{
+        ////    var keyword = this.Request.QueryString["keyword"] ?? "-1";
+        ////    if (keyword.Equals("-1"))
+        ////    {
+        ////        var display = new DisplayItem() { Display = "Please Search!" };
+        ////        return View(display);
+        ////    }
+
+        ////    var sql = $"Select Display from SecurityVulnerabilities_DisplayItems where Display like @keyword";
+        ////    var result = new StringBuilder(string.Empty);
+        ////    using (var connection = new SqlConnection(Config.GetConnectionString()))
+        ////    {
+        ////        var cmd = new SqlCommand(sql);
+        ////        cmd.CommandType = CommandType.Text;
+        ////        var keywordParameter = cmd.Parameters.Add(cmd.CreateParameter());
+        ////        keywordParameter.ParameterName = "@keyword";
+        ////        keywordParameter.Value = '%' + keyword + '%';
         ////        cmd.Connection = connection;
         ////        connection.Open();
 
