@@ -59,7 +59,7 @@ namespace JB.Security.SecurityVulnerabilities.Controllers
         }
 
 
-        //String Concat Stored Proc.Use for elevating user permissions.
+        //String Concat Stored Proc.
         ////[HttpGet]
         ////public ActionResult Index()
         ////{

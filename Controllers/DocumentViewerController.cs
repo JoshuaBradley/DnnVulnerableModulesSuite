@@ -40,7 +40,7 @@ namespace JB.Security.SecurityVulnerabilities.Controllers
                 document.Contents = "File not available";
                 return View(document);
             }
-            
+
             var contentType = MimeMapping.GetMimeMapping(filePath);
 
             return File(filePath, contentType);

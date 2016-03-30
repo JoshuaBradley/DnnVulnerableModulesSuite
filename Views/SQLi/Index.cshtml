@@ -4,5 +4,20 @@
 @using DotNetNuke.Web.Mvc.Helpers
 
 <div id="Items-@Dnn.ModuleContext.ModuleId">
-        @Html.Raw(Model.Display)
+    @Html.Raw(Model.Display)
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.Label("KeyWord", new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextBox("KeyWord")
+    </div>
+    <a class="update-button" href='@Url.Action("Index", "SQLi")?keyword=REPLACETHIS'>Keyword Search</a>
 </div>
+<script>
+    $(function () {
+        $('.update-button').on('click', function () {
+            var name = $('#KeyWord').val();
+            this.href = this.href.replace("REPLACETHIS", name);
+        });
+    });
+</script>
